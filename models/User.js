@@ -1,7 +1,9 @@
 const { Schema, model } = require('mongoose');
-//TRT
-const thoughtSchema = require('./Thought');
-const friendSchema = require('./Friend');
+
+const assignmentSchema = require('./Assignment');
+
+// const thoughtSchema = require('./Thought');
+// const friendSchema = require('./Friend');
 
 // Schema to create Student model
 const userSchema = new Schema(
@@ -19,8 +21,9 @@ const userSchema = new Schema(
       match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
     },
 
-    thoughts: [thoughtSchema],
-    friends: [friendSchema],
+    assignments: [assignmentSchema],
+    // thoughts: [thoughtSchema],
+    // friends: [friendSchema],
 
   },
   {

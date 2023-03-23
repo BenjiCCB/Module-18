@@ -1,4 +1,4 @@
-const { Course, Student } = require('../models');
+const { Course, User } = require('../models');
 
 module.exports = {
   // Get all courses
@@ -33,9 +33,9 @@ module.exports = {
       .then((course) =>
         !course
           ? res.status(404).json({ message: 'No course with that ID' })
-          : Student.deleteMany({ _id: { $in: course.students } })
+          : User.deleteMany({ _id: { $in: course.users } })
       )
-      .then(() => res.json({ message: 'Course and students deleted!' }))
+      .then(() => res.json({ message: 'Course and users deleted!' }))
       .catch((err) => res.status(500).json(err));
   },
   // Update a course
