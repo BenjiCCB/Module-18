@@ -11,13 +11,15 @@
 // // /api/users
 // router.route('/').get(getUsers).post(createUser);
 
-// // /api/students/:userId
+// // /api/users/:userId
 // router.route('/:userId').get(getSingleUser).delete(deleteUser);
 
-// // /api/students/:userId/assignments
+// // **SWITCHED TO THOUGHT ROUTES **
+// // /api/users/:userId/assignments
 // router.route('/:userId/assignments').post(addAssignment);
+// // ****
 
-// // /api/students/:userId/assignments/:assignmentId
+// // /api/user/:userId/assignments/:assignmentId
 // router.route('/:userId/assignments/:assignmentId').delete(removeAssignment);
 
 // module.exports = router;
@@ -28,12 +30,13 @@ const {
   getUsers,
   getSingleUser,
   createUser,
+  deleteUser,
 } = require('../../controllers/userController');
 
 // /api/users
 router.route('/').get(getUsers).post(createUser);
 
 // /api/students/:userId
-router.route('/:userId').get(getSingleUser)
+router.route('/:userId').get(getSingleUser).delete(deleteUser);
 
 module.exports = router;

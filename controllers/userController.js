@@ -62,6 +62,19 @@ module.exports = {
       .then((user) => res.json(user))
       .catch((err) => res.status(500).json(err));
   },
+
+  // Delete a user
+  deleteUser(req, res) {
+    User.findOneAndDelete({ _id: req.params.userId })
+      .then((user) =>
+        !user
+          ? res.status(404).json({ message: 'No user with that ID' })
+          : res.json({ message: 'User deleted!' })
+      )
+      .catch((err) => res.status(500).json(err));
+  },
+
+
   // // Delete a student and remove them from the course
   // deleteStudent(req, res) {
   //   Student.findOneAndRemove({ _id: req.params.studentId })
