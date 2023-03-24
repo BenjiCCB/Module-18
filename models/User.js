@@ -1,11 +1,9 @@
 const { Schema, model } = require('mongoose');
 
-const assignmentSchema = require('./Assignment');
+const thoughtSchema = require('./Thought');
+// const userSchema = require('./User');
 
-// const thoughtSchema = require('./Thought');
-// const friendSchema = require('./Friend');
-
-// Schema to create Student model
+// Schema to create Thought model
 const userSchema = new Schema(
   {
     username: {
@@ -20,10 +18,18 @@ const userSchema = new Schema(
       unique: true,
       match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
     },
-
-    assignments: [assignmentSchema],
-    // thoughts: [thoughtSchema],
-    // friends: [friendSchema],
+    thoughts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Thought',
+      },
+    ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
 
   },
   {
@@ -32,6 +38,12 @@ const userSchema = new Schema(
     },
   }
 );
+
+// virtual property that gets the amount of friends per user
+userSchema.virtual('friendCount').get(function () {
+  return this.assignments.length;
+});
+
 
 const User = model('user', userSchema);
 
