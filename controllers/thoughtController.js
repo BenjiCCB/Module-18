@@ -27,17 +27,6 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
-  // Delete a thought
-  // deleteThought(req, res) {
-  //   Thought.findOneAndDelete({ _id: req.params.thoughtId })
-  //     .then((thought) =>
-  //       !thought
-  //         ? res.status(404).json({ message: 'No thought with that ID' })
-  //         : res.json({ message: 'Thought and reactions deleted!' })
-  //     )
-  //     .catch((err) => res.status(500).json(err));
-  // },
-
   // Delete a thought and remove them from the course
   deleteThought(req, res) {
     Thought.findOneAndRemove({ _id: req.params.thoughtId })
@@ -62,9 +51,6 @@ module.exports = {
         res.status(500).json(err);
       });
   },
-
-
-
   // Update a thought
   updateThought(req, res) {
     Thought.findOneAndUpdate(
