@@ -8,20 +8,6 @@
 //   removeAssignment,
 // } = require('../../controllers/userController');
 
-// // /api/users
-// router.route('/').get(getUsers).post(createUser);
-
-// // /api/users/:userId
-// router.route('/:userId').get(getSingleUser).delete(deleteUser);
-
-// // **SWITCHED TO THOUGHT ROUTES **
-// // /api/users/:userId/assignments
-// router.route('/:userId/assignments').post(addAssignment);
-// // ****
-
-// // /api/user/:userId/assignments/:assignmentId
-// router.route('/:userId/assignments/:assignmentId').delete(removeAssignment);
-
 // module.exports = router;
 
 
@@ -31,6 +17,7 @@ const {
   getSingleUser,
   createUser,
   deleteUser,
+  addFriend,
 } = require('../../controllers/userController');
 
 // /api/users
@@ -38,5 +25,12 @@ router.route('/').get(getUsers).post(createUser);
 
 // /api/students/:userId
 router.route('/:userId').get(getSingleUser).delete(deleteUser);
+
+// /api/users/:userId/friends
+router.route('/:userId/friends').post(addFriend);
+
+// // /api/user/:userId/assignments/:assignmentId
+// router.route('/:userId/assignments/:assignmentId').delete(removeAssignment);
+
 
 module.exports = router;
