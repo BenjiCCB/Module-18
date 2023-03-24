@@ -29,13 +29,12 @@ module.exports = {
   },
   // Delete a thought
   deleteThought(req, res) {
-    Thought.findOneAndDelete({ _id: req.params.courseId })
-      .then((course) =>
-        !course
-          ? res.status(404).json({ message: 'No course with that ID' })
-          : Student.deleteMany({ _id: { $in: course.students } })
+    Thought.findOneAndDelete({ _id: req.params.thoughtId })
+      .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: 'No thought with that ID' })
+          : res.json({ message: 'Thought and reactions deleted!' })
       )
-      .then(() => res.json({ message: 'Course and students deleted!' }))
       .catch((err) => res.status(500).json(err));
   },
   // Update a course
