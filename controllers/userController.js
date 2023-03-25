@@ -7,22 +7,6 @@ const headCount = async () =>
     .count('userCount')
     .then((numberOfUsers) => numberOfUsers);
 
-// // Aggregate function for getting the overall grade using $avg
-// const grade = async (userId) =>
-//   User.aggregate([
-//     // only include the given student by using $match
-//     { $match: { _id: ObjectId(userId) } },
-//     {
-//       $unwind: '$assignments',
-//     },
-//     {
-//       $group: {
-//         _id: ObjectId(studentId),
-//         overallGrade: { $avg: '$assignments.score' },
-//       },
-//     },
-//   ]);
-
 module.exports = {
   
   // Get all users
@@ -63,6 +47,21 @@ module.exports = {
   createUser(req, res) {
     User.create(req.body)
       .then((user) => res.json(user))
+      .catch((err) => res.status(500).json(err));
+  },
+
+  // Update a user
+  updateUser(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $set: req.body },
+      { runValidators: true, new: true }
+    )
+      .then((user) =>
+        !user
+          ? res.status(404).json({ message: 'No user with this id!' })
+          : res.json(user)
+      )
       .catch((err) => res.status(500).json(err));
   },
 
