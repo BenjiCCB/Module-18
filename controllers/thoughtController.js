@@ -30,6 +30,28 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
+
+  // Create a thought with user
+  createThoughtwithUser(req, res) {
+    Thought.create(req.body)
+      .then((thought) => {
+        User.findOneAndUpdate(
+          { _id: req.params.userId },
+          { $push: { thoughts: thought._id } },
+          { new: true }
+        )
+      })
+      .then((user) => {
+      !user
+        ? res.status(404).json({
+          message: 'No user found',})
+        : res.json({ message: 'Thought successfully created' })
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
+  }, 
   
   // Delete a thought and remove them from the course
   deleteThought(req, res) {
