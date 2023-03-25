@@ -31,7 +31,7 @@ module.exports = {
       });
   },
 
-  // Create a thought with user
+  // Create a thought attached to a user
   createThoughtwithUser(req, res) {
     Thought.create(req.body)
       .then((thought) => {
