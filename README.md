@@ -51,6 +51,11 @@ Once your server is running, you can use a thrid-party app like Insomnia to quer
 * Create and delete friend relationships
 * Create and delete reactions
 
+Notes:
+* Creating and updating users can include linking thought and/or friend IDs (or empty arrays to clear)
+* New thoughts can be linked to a user ID, which will pull the user's username and insert the thought into the user's thoughts array
+* Deleting a thought will remove it from any user's thoughts array 
+
 ---
 
 ## App License 
