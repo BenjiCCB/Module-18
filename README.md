@@ -1,16 +1,16 @@
-# ReadMe - Module 12 Challenge 📝
+# ReadMe - Module 18 Challenge 📝
 
 ## Description 
 
-This app is a object relational mapping system, designed to let a user manage a company's database of products, categories and tags, using Node.js, exspress and sequilize.  With the app, you can create, read, update, and destroy objects using an API interface and modify items including employees, roles, and departments, as well as see advanced metrics about the organization's makeup.  
+This app is a social network API, designed to manage a database in various ways.  Through the API, one can create, read, update and delete users, which have thoughts and friends associated with them, as well as thoughts themselves, which have reactions associated with them via embedded documents. The app is built using Node.js, Express, MongoDB and Mongoose.  
 
-View more info below, as well as the github repo, a video preview, and a screenshot of the app in action.  
+View below for more info, as well as the github repo, a video preview, and a screenshot of the app in action.  
 
-Github: [link here](https://github.com/BenjiCCB/challenge-13)
+Github: [link here](https://github.com/BenjiCCB/challenge-18)
 
 Video overview: [link here](https://monosnap.com/file/s6M3lDwzyICsd2cmX8caxKlqcx1gZx)
 
-![screenshot](./assets/screenshots/appshot.png)
+![screenshot](https://monosnap.com/file/AZWJQiXuvvnWub1pqfBrUz1APQZj3H)
 
 
 

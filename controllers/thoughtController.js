@@ -33,9 +33,16 @@ module.exports = {
 
   // Create a thought attached to a user
   createThoughtwithUser(req, res) {
-    Thought.create(req.body)
+    User.findOne({
+      _id: req.params.userId
+    })
+    .then (user => {
+        Thought.create({
+          thoughtText: req.body.thoughtText,
+          username: user.username
+        })
       .then((thought) => {
-        User.findOneAndUpdate(
+        return User.findOneAndUpdate(
           { _id: req.params.userId },
           { $push: { thoughts: thought._id } },
           { new: true }
@@ -45,13 +52,16 @@ module.exports = {
       !user
         ? res.status(404).json({
           message: 'No user found',})
-        : res.json({ message: 'Thought successfully created' })
+        : res.json(user)
       })
+    })
       .catch((err) => {
         console.log(err);
-        return res.status(500).json(err);
+        // return res.status(500).json(err);
+        res.status(404).json({
+        message: 'No user found',})
       });
-  }, 
+  },
   
   // Delete a thought and remove them from the course
   deleteThought(req, res) {
@@ -59,7 +69,7 @@ module.exports = {
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: 'No such thought exists' })
-          : User.findOneAndUpdate(
+          : User.updateMany(
               { thoughts: req.params.thoughtId },
               { $pull: { thoughts: req.params.thoughtId } },
               { new: true }
