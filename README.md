@@ -8,9 +8,9 @@ View below for more info, as well as the github repo, a video preview, and a scr
 
 Github: [link here](https://github.com/BenjiCCB/challenge-18)
 
-Video overview: [link here](https://monosnap.com/file/s6M3lDwzyICsd2cmX8caxKlqcx1gZx)
+Video overview: [link here](https://www.youtube.com/watch?v=CU9BR6PX6kk)
 
-![screenshot](https://monosnap.com/file/AZWJQiXuvvnWub1pqfBrUz1APQZj3H)
+![screenshot](./assets/appshot.png)
 
 
 
@@ -38,19 +38,18 @@ Video overview: [link here](https://monosnap.com/file/s6M3lDwzyICsd2cmX8caxKlqcx
 
 ## Installation Instructions 
 
-To begin, run NPM install, to add in all necessary node packages.  After this, you'll need to add in your database information to the .env file.  You can then create the database by loading into the mysql shell ('mysql -u root -p', then password) and running 'source db/schema.'  After quitting, run 'node seeds/index.js' to seed the database.  Finally, you can then run 'node server.js' in the terminal and the application will run
+Installation of the app is quite straightforward... after downloading, simply run npm install from the directory, and then npm start to launch the server
 
 ---
 
 ## Usage Information 
 
-The app provides a full CRUD interface to be able to manipulate elements of the database, using API calls from a source like Insomnia.  Functionality includes:
+Once your server is running, you can use a thrid-party app like Insomnia to query the database/API.  Functionality of the app includes:
 
-* Create, read, update, and delete products
-* Create, read, update, and delete categories
-* Create, read, update, and delete tags
-
-When reading relevant object types, all associated objects will be displayed
+* Create, read, update, and delete users
+* Create, read, update, and delete thoughts
+* Create and delete friend relationships
+* Create and delete reactions
 
 ---
 
